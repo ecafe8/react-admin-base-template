@@ -1,0 +1,19 @@
+{
+  "presets": [
+    "react",
+    ["env", { "modules": false }],
+    "stage-1"],
+  "plugins": [
+    "transform-runtime",
+    "transform-object-rest-spread",
+    "transform-decorators-legacy",
+    "lodash",
+    ["import", { "libraryName": "antd", "style": "css" }]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+      ]
+    }
+  }
+}
