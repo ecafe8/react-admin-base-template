@@ -1,7 +1,7 @@
 import * as mobx from 'mobx';
 import ajax from 'common/utils/ajax';
 import Base from 'store/model/base';
-const { observable, action, runInAction, computed } = mobx;
+const { observable, action, runInAction, computed, toJS } = mobx;
 
 /**
  * 商品列表
@@ -15,16 +15,12 @@ export default class Items extends Base {
   @observable pageNo = 1;
   @observable pageSize = 20;
 
-  @computed get nickName() {
-    return this.isSubAccount ? `${this.nick}:${this.subNick}` : this.nick;
-  }
-
   @computed get loading() {
     return this.state === 'pending';
   }
 
   @computed get listData() {
-    return mobx.toJS(this.list);
+    return toJS(this.list);
   }
 
   @action async getItemsList() {
