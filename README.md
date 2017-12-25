@@ -31,6 +31,7 @@ sinx build
 [mobx](http://cn.mobx.js.org/)
 [react-router](https://github.com/ReactTraining/react-router)
 [react-loadable 异步加载组件](https://github.com/thejameskyle/react-loadable)
+[mockjs](https://github.com/nuysoft/Mock/wiki/Syntax-Specification)
 
 #### 后端
 [restc](https://elemefe.github.io/restc/intro/)

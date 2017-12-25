@@ -9,8 +9,22 @@ import css from './index.less';
 @observer
 export default class ItemsEditPage extends React.Component {
 
+  componentDidMount() {
+    const {
+      store: { item },
+      match: { params: { itemId } }
+    } = this.props;
+
+    if (itemId) {
+      item.getItemDetail(itemId);
+    }
+  }
+
   render() {
-    const { match: { params: { itemId } } } = this.props;
+    const {
+      store: { item },
+      match: { params: { itemId } }
+    } = this.props;
 
     return (
       <PageLayout>

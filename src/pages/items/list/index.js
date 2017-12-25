@@ -23,7 +23,11 @@ export default class ItemsListPage extends React.Component {
       {
         title: '商品图片',
         dataIndex: 'img',
-        render: val => <img src={val} />,
+        render: val => (
+          <div className={css.img}>
+            <img src={val} />
+          </div>
+        ),
       },
       {
         title: '商品标题',
@@ -41,9 +45,9 @@ export default class ItemsListPage extends React.Component {
       },
       {
         title: '操作',
-        render: () => (
+        render: (item) => (
           <div>
-            <a href="">修改</a>
+            <a href={`#/items/edit/${item.id}`}>修改</a>
             <Divider type="vertical" />
             <a href="">上架</a>
           </div>
@@ -54,7 +58,7 @@ export default class ItemsListPage extends React.Component {
     const props = {
       loading,
       columns,
-      rowKey: record => record.key,
+      rowKey: record => record.id,
       dataSource: listData,
       pagination: {
         showSizeChanger: true,
@@ -62,6 +66,11 @@ export default class ItemsListPage extends React.Component {
         currentPage: pageNo,
         pageSize: pageSize,
         total,
+        onChange: (val) => {
+          this.props.store.items.update({
+            pageNo: val,
+          });
+        }
       }
     };
 

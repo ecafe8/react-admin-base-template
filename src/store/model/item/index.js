@@ -17,14 +17,16 @@ export default class Item extends Base {
     return this.state === 'pending';
   }
 
-  @action async getItemDetail() {
+  @action async getItemDetail(itemId) {
     this.state = 'pending';
     try {
+      this.itemId = itemId;
       const data = await ajax.req('item.getItemDetail', {
-        itemId: this.itemId,
+        itemId,
       });
       runInAction(() => {
         this.state = 'done';
+        console.log('getItemDetail data = ', data);
         this.title = data.title;
         this.img = data.img;
         this.price = data.price;
