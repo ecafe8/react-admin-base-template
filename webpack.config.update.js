@@ -3,10 +3,12 @@ const path = require('path');
 const currentPath = path.resolve(process.cwd(), './src');
 
 module.exports = (config) => {
-  config.entry = {
-    ...config.entry,
-    mock: currentPath + '/mock/index.js',
-  };
+  if (process.env.NODE_ENV !== 'production') {
+    config.entry = {
+      ...config.entry,
+      mock: currentPath + '/mock/index.js',
+    };
+  }
   config.resolve = {
     ...config.resolve,
     alias: {
