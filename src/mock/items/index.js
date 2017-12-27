@@ -4,6 +4,7 @@ import { makeItem } from '../item';
 
 Mock.mock(/mock.getItemsList/, request => {
   const params = queryString(request.url);
+  console.log('getItemsList params', params);
   const { pageSize = 10 } = params;
   const list = [];
 

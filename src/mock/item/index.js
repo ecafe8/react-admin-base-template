@@ -1,10 +1,9 @@
 import Mock, { Random } from 'mockjs';
 import uuid from 'uuid/v4';
 import { output, queryString } from '../help';
-let id = 1;
 export function makeItem() {
   return {
-    id: id++,
+    id: Random.increment(),
     key: uuid,
     title: Random.ctitle(10, 20),
     img: Random.dataImage('80x80', '盛夏科技'),

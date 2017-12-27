@@ -70,6 +70,11 @@ export default class ItemsListPage extends React.Component {
           this.props.store.items.update({
             pageNo: val,
           });
+        },
+        onShowSizeChange: (val, size) => {
+          this.props.store.items.update({
+            pageSize: size,
+          });
         }
       }
     };

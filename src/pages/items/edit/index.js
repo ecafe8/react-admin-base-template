@@ -22,10 +22,12 @@ export default class ItemsEditPage extends React.Component {
 
   render() {
     const {
+      store,
       store: { item },
       match: { params: { itemId } }
     } = this.props;
 
+    console.log('store', store);
     return (
       <PageLayout>
         {
