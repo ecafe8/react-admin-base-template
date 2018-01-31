@@ -8,8 +8,8 @@
     "lint": "./node_modules/.bin/eslint --fix src"
   },
   "dependencies": {
-    "ant-design-pro": "^0.3.0",
-    "antd": "^3.0.3",
+    "ant-design-pro": "1.1.0",
+    "antd": "3.1.6",
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
@@ -55,6 +55,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.30.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
     "mockjs": "^1.0.1-beta3",

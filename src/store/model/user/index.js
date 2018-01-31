@@ -16,9 +16,30 @@ export default class User extends Base {
   @observable isSubAccount = isSubAccount || false;
   @observable level = level || '未知';
   @observable state = 'done'; // done, pending
+  @observable isLogin = false; // 登录状态
 
   @computed get nickName() {
     return this.isSubAccount ? `${this.nick}:${this.subNick}` : this.nick;
+  }
+
+  /**
+   * 获取登录状态
+   * @returns {Promise.<void>}
+   */
+  @action async getLoggedStatus() {
+    this.state = 'pending';
+    try {
+      const data = await ajax.req('user.getLoggedStatus');
+      runInAction(() => {
+        this.state = 'done';
+        this.isLogin = data.isLogin;
+      });
+    } catch (e) {
+      runInAction(() => {
+        this.isLogin = false;
+        this.state = 'error';
+      });
+    }
   }
 
   // 暂时不用异步获取用户
