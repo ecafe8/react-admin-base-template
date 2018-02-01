@@ -55,7 +55,7 @@ export default class SideMenu extends React.Component {
       } else {
         itemPath = `${parentPath}/${item.path || ''}`.replace(/\/+/g, '/');
       }
-      if (item.children && item.children.some(child => child.name)) {
+      if (item.children && item.children.filter(child => !child.hideInMenu).length && item.children.some(child => child.name)) {
         return (
           <SubMenu
             title={
