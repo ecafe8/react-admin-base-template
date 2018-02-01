@@ -1,11 +1,10 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import { Menu, Icon, Dropdown, Avatar } from 'antd';
 import css from './index.less';
 
 const { Item, Divider } = Menu;
 
-@inject('store')
 @observer
 export default class CurrentUser extends React.Component {
 
@@ -28,7 +27,7 @@ export default class CurrentUser extends React.Component {
         <Item key="logout" onClick={this.onLogoutClick}><Icon type="logout" />退出登录</Item>
       </Menu>
     );
-    const { nick, subNick, isSubAccount, avatar } = this.props.store.user;
+    const { nick, subNick, isSubAccount, avatar } = CFG.user;
     return (
       <Dropdown overlay={menu}>
         <span className={`${css.action} ${css.account}`}>

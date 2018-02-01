@@ -1,5 +1,5 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import css from './index.less';
 import { Avatar } from 'antd';
 import moment from 'moment';
@@ -22,13 +22,17 @@ const hello = () => {
   return s + '好';
 };
 
-@inject('store')
 @observer
 export default class WelcomePage extends React.Component {
 
+  get nickName() {
+    const { nick, subNick, isSubAccount } = CFG.user;
+    return isSubAccount ? `${nick}:${subNick}` : nick;
+  }
+
   render() {
-    const { nickName, avatar, level } = this.props.store.user;
-    const { company } = CFG;
+    const { nickName } = this;
+    const { company, user: { avatar, level } } = CFG;
     return (
       <div className={css.pageHeaderContent}>
         <div className={css.avatar}>
