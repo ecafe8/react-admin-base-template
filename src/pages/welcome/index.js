@@ -13,6 +13,9 @@ const hello = () => {
   if (hour > 12) {
     s = '中午';
   }
+  if (hour > 14) {
+    s = '下午';
+  }
   if (hour > 18) {
     s = '晚上';
   }
