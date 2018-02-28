@@ -31,6 +31,10 @@ const buildRoutes = (data, parentPath = '') => {
 };
 
 export default class Router extends React.Component {
+  componentWillMount() {
+    // getLoggedUser();
+  }
+
 
   render() {
     return (
