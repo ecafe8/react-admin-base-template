@@ -1,7 +1,4 @@
-import * as mobx from 'mobx';
-const { useStrict, action, extendObservable, isObservable } = mobx;
-
-useStrict(true); // 不允许在动作之外进行状态修改
+import { action, extendObservable, isObservableProp } from 'mobx';
 
 export default class Base {
 
@@ -28,7 +25,7 @@ export default class Base {
         this.update(k, v);
       });
     } else {
-      if (isObservable(this, key)) {
+      if (isObservableProp(this, key)) {
         this[key] = val;
       } else {
         console.warn(`warning! '${key}' is not observable!`); // 不允许更新非监听状态的键值
