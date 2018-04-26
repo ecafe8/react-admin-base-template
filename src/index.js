@@ -1,3 +1,5 @@
+__webpack_public_path__ = CFG.publicPath;
+
 import 'babel-polyfill';
 import 'moment/locale/zh-cn';
 import React from 'react';
