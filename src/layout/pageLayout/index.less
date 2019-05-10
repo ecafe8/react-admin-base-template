@@ -1,0 +1,37 @@
+@import "~common/less/mixin";
+
+.wrapHeader {
+  background-color: #fff;
+}
+.wrapCenter {
+  .fnWrapCenter();
+}
+.wrapContent {
+  margin: 24px 24px 0;
+  // todo remove
+  min-height: 800px;
+}
+
+// 覆盖定义 页头面包屑样式
+:global {
+  .ant-page-header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .antd-pro-page-header-pageHeader {
+    .antd-pro-page-header-breadcrumb {
+      font-size: 12px;
+      margin-bottom: 12px;
+      .ant-breadcrumb-separator,
+      .ant-breadcrumb-link {
+        margin-right: 10px;
+      }
+
+      > span:last-child {
+        .ant-breadcrumb-separator {
+          display: none;
+        }
+      }
+    }
+  }
+}

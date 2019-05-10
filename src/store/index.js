@@ -1,4 +1,4 @@
-import { observable, configure } from 'mobx';
+import { observable, configure, action } from 'mobx';
 import Base from 'store/model/base';
 import App from 'store/model/app';
 
@@ -7,7 +7,7 @@ import App from 'store/model/app';
  * https://github.com/mobxjs/mobx/blob/gh-pages/docs/refguide/api.md#configure
  */
 configure({
-  enforceActions: true, // 不允许在动作之外进行状态修改
+  enforceActions: 'always', // 不允许在动作之外进行状态修改
 });
 
 class Store extends Base {

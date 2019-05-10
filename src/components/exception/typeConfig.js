@@ -14,6 +14,11 @@ const config = {
     title: '500',
     desc: '抱歉，服务器出错了',
   },
+  501: {
+    img: '//gw.alipayobjects.com/zos/rmsportal/RVRUAYdCGeYNBWoKiIwB.svg',
+    title: '501',
+    desc: '抱歉，页面出错了。请联系管理员。',
+  },
 };
 
 export default config;

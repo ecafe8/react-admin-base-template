@@ -1,0 +1,63 @@
+@import "~common/less/mixin";
+
+.head {
+  width: 100%;
+  transition: background 0.3s, width 0.2s;
+  height: 64px;
+  // padding: 0 12px 0 0;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  position: relative;
+  color: hsla(0,0%,100%,.85);
+}
+
+.wrapCenter {
+  display: flex;
+  height: 64px;
+  padding-left: 12px;
+  .fnWrapCenter();
+
+  .left {
+    flex: 1;
+    display: flex;
+  }
+  .right {
+    width: 324px;
+  }
+}
+
+.logo {
+  width: 165px;
+  height: 64px;
+  position: relative;
+  line-height: 64px;
+  transition: all 0.3s;
+  overflow: hidden;
+  .logoImg {
+    height: 24px;
+    width: 24px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .logoIcon {
+    font-size: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: #fff;
+  }
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+  }
+  h1 {
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    vertical-align: -webkit-baseline-middle; // chrome 上下居中
+    font-size: 16px;
+    // margin: 0 0 0 12px;
+    font-weight: 400;
+  }
+}

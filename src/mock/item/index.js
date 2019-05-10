@@ -1,25 +1,35 @@
 import Mock, { Random } from 'mockjs';
-import uuid from 'uuid/v4';
-import { output, queryString } from '../help';
-export function makeItem() {
-  return {
-    id: Random.increment(),
-    key: uuid,
-    title: Random.ctitle(10, 20),
-    img: Random.dataImage('80x80', '盛夏科技'),
-    price: (Random.integer(100, 9999999)),
-    time: parseInt(Random.datetime('T')),
-  };
-}
+import {output, queryString, mockApi} from '../helper';
 
-Mock.mock(/mock.getItemDetail/, request => {
+const makeGoods = () => {
+  return {
+    id: `mock${Random.increment(1000)}`,
+    title: Random.ctitle(5, 8),
+    pic: Random.dataImage('40x40', '模拟'),
+    price: Random.integer(10, 999) + '.00',
+    promotionPrice: Random.integer(10, 999) + '.00',
+  };
+};
+
+mockApi(/mock.item.getList/, ({ request }) => {
   const params = queryString(request.url);
-  const { itemId } = params;
+
+  const { pageSize = 10 } = params;
+  const list = [];
+
+  for (let i = 0; i < pageSize; i++) {
+    list.push(makeGoods());
+  }
+
   return output({
-    ...makeItem(),
-    id: itemId,
+    list,
+    total: Random.integer(50, 140),
   });
 });
 
+mockApi(/mock.item.getDetail/, ({ params }) => {
 
-
+  return output({
+    ...makeGoods(),
+  });
+});

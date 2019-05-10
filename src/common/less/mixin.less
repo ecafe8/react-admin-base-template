@@ -1,0 +1,76 @@
+@import "~antd/lib/style/themes/default.less";
+@import "~common/less/var.less";
+
+/**
+  颜色渐变
+ */
+.fnColorGradient(@color1: @primary-4, @color2: @primary-7) {
+  background-image: linear-gradient(44deg, @color1 0%, @color2 100%);
+}
+
+/**
+  强制文本不换行
+ */
+.fnTextNoWrap() {
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+/**
+  强制文本换行 - 需要将行内元素设置为块级元素
+ */
+.fnTextWrap() {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+/**
+  包裹区居中
+ */
+.fnWrapCenter() {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/**
+  文字超出隐藏,需要定宽
+ */
+.fnTextOverflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
+
+/**
+  三角形 5个参数：宽度，颜色（上、右、下、左）.fnTriangle(20px, #000, transparent, transparent, transparent)
+ */
+.fnTriangle(@width: 8px, @pram1: transparent, @pram2: transparent, @pram3: transparent, @pram4: transparent) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: @width;
+  border-color: @pram1 @pram2 @pram3 @pram4;
+}
+
+// 字体通用
+.font-small() {
+  font-size: 12px;
+  line-height: 18px;
+}
+.font-normal() {
+  font-size: 14px;
+  line-height: 22px;
+}
+.title-small() {
+  font-size: 16px;
+  line-height: 24px;
+}
+.title-normal() {
+  font-size: 20px;
+  line-height: 28px;
+}
+.title-big() {
+  font-size: 30px;
+  line-height: 38px;
+}

@@ -13,6 +13,7 @@ module.exports = {
     "amd": false,
   },
   "plugins": [
+    "react-hooks",
     "react", // 插件地址 https://github.com/yannickcr/eslint-plugin-react
     "import" // 插件地址 https://github.com/benmosher/eslint-plugin-import
   ],
@@ -45,6 +46,7 @@ module.exports = {
     "_": true, // lodash 全局变量
     "React": true,
     "ReactDom": true,
+    "__DEV__": true,
     "KISSY": false,
     "TB": false,
     "JSTracker": false,
@@ -176,6 +178,10 @@ module.exports = {
     /**
      * React JSX 规范
      */
+
+    "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+    "react-hooks/exhaustive-deps": "warn", // 检查 effect 的依赖
+
     "react/display-name": 0, // 是否显示 Component 名称
     "react/jsx-boolean-value": [0, "always"], // 传递布尔值时是否明确支持
     "jsx-quotes": [2, "prefer-double"], // jsx 属性值用双引号

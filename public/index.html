@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-  <title>盛夏新零售后台</title>
+  <title>盛夏管理后台</title>
   <link rel="icon" href="./favicon.jpg" type="image/x-icon">
 </head>
 <body>
@@ -16,20 +16,15 @@
     company: '盛夏科技',
     user: {
       avatar: '//gd3.alicdn.com/imgextra/i3/3380728263/TB2dDZpannI8KJjSszbXXb4KFXa_!!3380728263.jpg_100x100.jpg',
-      nick: '二哈',
+      nick: '锦江区吴彦祖',
       subNick: '狗剩',
       isSubAccount: false, // 是否子账号
-      level: '草鸡管理员'
+      level: '管理员'
     },
     api: {
-      user: {
-        getCurrentUser: 'mock.getCurrentUser',
-      },
       item: {
-        getItemDetail: 'mock.getItemDetail',
-      },
-      items: {
-        getItemsList: 'mock.getItemsList',
+        getList: 'mock.item.getList',
+        getDetail: 'mock.item.getDetail',
       }
     }
   }

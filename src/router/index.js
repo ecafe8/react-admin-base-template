@@ -1,52 +1,34 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Suspense } from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { LocaleProvider, Spin } from 'antd';
+import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
-import NotFound from 'pages/exception/404';
-import RouteData from 'common/const/routeData';
-import MainLayout from 'components/layouts/mainLayout';
+import NotFound from 'components/exception/404';
+import SiteLayout from 'layout/siteLayout';
+import { observer, inject } from 'mobx-react';
+import Loading from 'components/loading';
+import routesWithComponent from './helper';
+import ErrorBoundary from 'components/error';
 
-const buildRoutes = (data, parentPath = '') => {
-  let routesList = [];
-  data.forEach(item => {
-    const path = `${parentPath}/${item.path || ''}`.replace(/\/+/g, '/');
-    const props = {
-      exact: true,
-      key: item.key || path,
-      path,
-      component: item.component,
-    };
-    if (item.children && !item.component) {
-      routesList.push(...buildRoutes(item.children, path));
-    } else {
-      if (item.children && item.component) {
-        item.exact = false;
-      }
-      routesList.push(
-        <Route {...props} />
-      );
-    }
-  });
-  return routesList;
-};
 
+@inject('store')
+@observer
 export default class Router extends React.Component {
-  componentWillMount() {
-    // getLoggedUser();
-  }
-
 
   render() {
     return (
       <LocaleProvider locale={zhCN}>
         <HashRouter>
-          <MainLayout>
-            <Switch>
-              {buildRoutes(RouteData)}
-              <Route path="/404" component={NotFound} />
-              <Redirect to="/welcome" />
-            </Switch>
-          </MainLayout>
+          <ErrorBoundary>
+            <SiteLayout>
+              <Suspense fallback={<Loading />}>
+                <Switch>
+                  {routesWithComponent}
+                  <Route path="/404" component={NotFound} key="404" />
+                  <Redirect to="/welcome" />
+                </Switch>
+              </Suspense>
+            </SiteLayout>
+          </ErrorBoundary>
         </HashRouter>
       </LocaleProvider>
     );

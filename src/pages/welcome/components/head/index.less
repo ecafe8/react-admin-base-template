@@ -1,0 +1,47 @@
+@import "~common/less/mixin.less";
+
+.pageHeaderContent {
+  display: flex;
+  background-color: #fff;
+  margin-top: -32px;
+
+  .avatar {
+    flex: 0 1 72px;
+    margin-bottom: @spacer / 3;
+    & > span {
+      border-radius: 72px;
+      display: block;
+      width: 72px;
+      height: 72px;
+    }
+  }
+  .content {
+    position: relative;
+    top: 4px;
+    margin-left: @spacer;
+    flex: 1 1 auto;
+    color: @text-color-secondary;
+    .font-normal();
+    .contentTitle {
+      .title-normal();
+      font-weight: 500;
+      color: @heading-color;
+      margin-bottom: @spacer / 2;
+    }
+    .contentText {
+      color: rgba(0, 0, 0, 0.45);
+
+      .divider {
+        background: rgba(0, 0, 0, .25);
+      }
+    }
+  }
+
+  .changelog {
+    flex: 0 1 300px;
+    font-size: 12px;
+    ul {
+      list-style: inside disc;
+    }
+  }
+}

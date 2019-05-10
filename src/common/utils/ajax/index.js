@@ -13,14 +13,14 @@ export default class Ajax {
   static getApi(api) {
     let url = eval(`CFG.api.${api}`);
     let arr = url.split('.');
-    if (isLocal() && arr[0] !== 'mock') {
-      arr = api.split('.');
-      url = './mock';
-      arr.forEach(item => {
-        url += '/' + item;
-      });
-      url += '.json';
-    }
+    // if (isLocal() && arr[0] !== 'mock') {
+    //   arr = api.split('.');
+    //   url = './mock';
+    //   arr.forEach(item => {
+    //     url += '/' + item;
+    //   });
+    //   url += '.json';
+    // }
     return url;
   }
 
@@ -47,7 +47,6 @@ export default class Ajax {
         params
       };
     }
-
 
     // 发起请求
     return axios[method](url, params).then(resp => {
