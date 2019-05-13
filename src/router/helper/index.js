@@ -26,7 +26,7 @@ import { lazy } from 'components/lazyComponent';
 export const createRoutesData = (_baseData, parentPath = '') => {
   let _array = [];
   _baseData.forEach(item => {
-    const { isAntdIcon = true, children, ...other } = item;
+    const { isAntdIcon = true, children, pathParams, ...other } = item;
     const hasChildren = children && children.length;
 
     const path = mergePath({
@@ -34,10 +34,16 @@ export const createRoutesData = (_baseData, parentPath = '') => {
       parentPath,
     });
 
+    let routePath = `/${path}`;
+
+    if (pathParams) {
+      routePath = `${routePath}/:${pathParams}`;
+    }
+
     let route = {
       isAntdIcon,
       key: path,
-      path: `/${path}`,
+      path: routePath,
       component: item.component ? item.component : hasChildren && !item.needRender ? undefined : lazy(path), // 加载路径中不能有 '/' 开头
       breadcrumbName: item.name,
       ...other,
@@ -65,9 +71,6 @@ export const mergePath = ({ key, path, parentPath = '', pathParams }) => {
   path = path || key;
   if (parentPath) {
     path = `${parentPath}/${path}`;
-  }
-  if (pathParams) {
-    path = `${path}/:${pathParams}`;
   }
   return path.replace(/\/+/g, '/');
 };

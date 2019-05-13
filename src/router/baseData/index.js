@@ -55,6 +55,7 @@ export default [
         key: 'edit',
         name: '商品编辑',
         hideInMenu: true,
+        pathParams: 'sid(\\d+)',
       },
     ]
   },
