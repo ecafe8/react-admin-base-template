@@ -49,14 +49,14 @@ export default class Ajax {
     }
 
     // 发起请求
-    return axios[method](url, params).then(resp => {
-      return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
+      axios[method](url, params).then(resp => {
         const respData = resp.data;
         const { code, data } = respData;
         if (code !== 0) {
           reject(respData);
         } else {
-          resolve(data, respData);
+          resolve(data);
         }
       });
     }).catch((error) => {
