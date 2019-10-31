@@ -75,6 +75,6 @@
     "stylelint-config-standard": "^18.0.0",
     "url-loader": "^0.5.9",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^3.9.0"
   }
 }
